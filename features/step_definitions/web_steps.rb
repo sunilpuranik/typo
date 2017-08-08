@@ -41,11 +41,18 @@ Given /^the blog is set up$/ do
                 :profile_id => 1,
                 :name => 'admin',
                 :state => 'active'})
+                
+  User.create!({:login => 'non-admin',
+                :password => 'aaaaaaaa',
+                :email => 'man@snow.com',
+                :profile_id => 2,
+                :name => 'non-admin',
+                :state => 'active'})
 end
 
-And /^I am logged into the admin panel$/ do
+And /^I am logged into the (non-)?admin panel$/ do |non| 
   visit '/accounts/login'
-  fill_in 'user_login', :with => 'admin'
+  fill_in 'user_login', :with => "#{non}admin"
   fill_in 'user_password', :with => 'aaaaaaaa'
   click_button 'Login'
   if page.respond_to? :should
@@ -89,6 +96,12 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+ #Given /^the following articles exist:$/ do |attributes|
+  # attributes.each do |attr| 
+   #  Article.find_or_create_by(title: attr['title'], body: attr['body'])
+  # end
+ #end
+ 
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

@@ -48,6 +48,7 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 group :development, :test do
   gem 'ruby-debug19'
   gem 'factory_girl', '~> 2.2'
+  gem 'cucumber_factory'
   gem 'webrat'
   gem 'rspec-rails', '~> 2.0'
   gem 'simplecov', :require => false
