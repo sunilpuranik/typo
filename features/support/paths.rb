@@ -3,6 +3,7 @@
 # This file is used by web_steps.rb, which you should also delete
 #
 # You have been warned
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -17,6 +18,10 @@ module NavigationHelpers
       '/'
     when /^the new article page$/
       '/admin/content/new'
+    when /^the article index$/
+      '/admin/conetent/'
+    when /^the article page for "([^"]*)"$/
+      Article.find_by_title($1).permalink_url(nil, true)
     when /^the new category page$/
       '/admin/categories/new' 
     # Add more mappings here.

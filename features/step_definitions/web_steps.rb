@@ -92,6 +92,11 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )fill in "([^"]*)" with the id of "([^"]*)"$/ do |field, value|
+  this_article = Article.where(title: value)[0]
+  fill_in(field, :with => this_article.id)
+end
+
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
@@ -289,3 +294,4 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
