@@ -115,7 +115,7 @@ class Admin::ContentController < Admin::BaseController
   
   def merge_article
      article_id = params[:article_id]
-     other_article_id = params[:other_article_id]
+     other_article_id = params[:merge_with]
      @article = Article.find(article_id)
      @article.merge_with(other_article_id)
      flash[:notice] = "Articles succcesfully merged"
